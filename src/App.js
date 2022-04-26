@@ -40,7 +40,7 @@ const App = () => {
             level={5}
             style={{ color: "white", textAlign: "center" }}
           >
-            Crypto-News <br />
+            Crypto News <br />
             All Rights Reserved DC Media 2022
           </Typography.Title>
           <Space>

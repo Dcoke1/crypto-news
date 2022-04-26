@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const key = process.env.REACT_APP_COINGECKO_API_KEY;
+const key = process.env.REACT_APP_RAPID_API_KEY;
 
 const cryptoApiHeaders = {
   "X-RapidAPI-Host": "coingecko.p.rapidapi.com",
@@ -21,6 +21,9 @@ export const cryptoApi = createApi({
     getExchanges: builder.query({
       query: () => createRequest(`${base_URL}/exchanges/list`),
     }),
+    getDetails: builder.query({
+      query: (coinId) => createRequest(`${base_URL}/coins/${coinId}`),
+    }),
     getCoins: builder.query({
       query: (count) => {
         return {
@@ -38,5 +41,5 @@ export const cryptoApi = createApi({
   }),
 });
 
-export const { useGetCryptosQuery, useGetExchangesQuery, useGetCoinsQuery } =
+export const { useGetCryptosQuery, useGetExchangesQuery, useGetCoinsQuery, useGetDetailsQuery } =
   cryptoApi;

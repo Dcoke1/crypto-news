@@ -1,6 +1,6 @@
 import React from "react";
 import millify from "millify";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 
 import { useGetCoinsQuery } from "../services/cryptoApi";
@@ -9,13 +9,26 @@ const CryptoCurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCoinsQuery(count);
   const [cryptos, setCryptos] = React.useState([]);
+  const [search, setSearch] = React.useState("");
 
   React.useEffect(() => {
-    setCryptos(cryptosList);
-  }, [isFetching, cryptos]);
+    const filteredData = cryptosList?.filter((coin) =>
+      coin.name.toLowerCase().includes(search.toLocaleLowerCase())
+    );
+
+    setCryptos(filteredData);
+  }, [isFetching, cryptos, search]);
 
   return (
     <div>
+      {!simplified && (
+        <div className="search-crypto">
+          <Input
+            placeholder="Search Crypto Currencies"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+      )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {isFetching ? (
           <h1 style={{ width: "100%", textAlign: "center" }}>Loading...</h1>
@@ -34,11 +47,11 @@ const CryptoCurrencies = ({ simplified }) => {
                   }
                   hoverable
                 >
-                  <p>Price: {millify(currency.current_price)}</p>
-                  <p>Market Cap: {millify(currency.market_cap)}</p>
+                  <p>Price: {`$${millify(currency.current_price)}`}</p>
+                  <p>Market Cap: {`$${millify(currency.market_cap)}`}</p>
                   <p>
                     Daily Change:
-                    {`${millify(currency.market_cap_change_percentage_24h)}%`}
+                    {` ${millify(currency.market_cap_change_percentage_24h)}%`}
                   </p>
                 </Card>
               </Link>

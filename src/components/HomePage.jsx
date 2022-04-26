@@ -60,7 +60,7 @@ const HomePage = () => {
           </Link>
         </Title>
       </div>
-      <CryptoCurrencies simplified/>
+      <CryptoCurrencies simplified />
       <div className="home-heading-container">
         <Title level={2} className="home-title">
           Latest Crypto News
@@ -71,7 +71,7 @@ const HomePage = () => {
           </Link>
         </Title>
       </div>
-      <News simplified/>
+      <News simplified />
     </>
   );
 };
