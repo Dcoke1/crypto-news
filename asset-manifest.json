@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.544ce8f1.css",
-    "main.js": "/static/js/main.ab2cb484.js",
-    "static/media/image1.png": "/static/media/image1.1548aced3f0605895bac.png",
-    "index.html": "/index.html",
-    "main.544ce8f1.css.map": "/static/css/main.544ce8f1.css.map",
-    "main.ab2cb484.js.map": "/static/js/main.ab2cb484.js.map"
+    "main.css": "/crypto-news/static/css/main.544ce8f1.css",
+    "main.js": "/crypto-news/static/js/main.19ffdc58.js",
+    "static/media/image1.png": "/crypto-news/static/media/image1.1548aced3f0605895bac.png",
+    "index.html": "/crypto-news/index.html",
+    "main.544ce8f1.css.map": "/crypto-news/static/css/main.544ce8f1.css.map",
+    "main.19ffdc58.js.map": "/crypto-news/static/js/main.19ffdc58.js.map"
   },
   "entrypoints": [
     "static/css/main.544ce8f1.css",
-    "static/js/main.ab2cb484.js"
+    "static/js/main.19ffdc58.js"
   ]
 }
