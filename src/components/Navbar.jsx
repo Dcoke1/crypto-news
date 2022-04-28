@@ -20,12 +20,12 @@ const Navbar = () => {
           level={2}
           className="logo"
         >
-          <Link to="/crypto-news">Crypto News</Link>
+          <Link to="/">Crypto News</Link>
         </Typography.Title>
       </div>
       <Menu theme="dark">
         <Menu.Item key={1} icon={<HomeOutlined />}>
-          <Link to="/crypto-news">Home</Link>
+          <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item key={2} icon={<FundOutlined />}>
           <Link to="/cryptocurrencies">Cryptocurrencies</Link>

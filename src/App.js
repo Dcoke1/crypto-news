@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { Layout, Typography, Space } from "antd";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -24,7 +24,7 @@ const App = () => {
           <div className="routes">
             <ScrollToTop>
             <Routes>
-              <Route exact path="/crypto-news" element={<HomePage />} />
+              <Route exact path="/" element={<HomePage />} />
               <Route exact path="/exchanges" element={<Exchanges />} />
               <Route
                 exact
@@ -47,7 +47,7 @@ const App = () => {
             All Rights Reserved DC Media 2022
           </Typography.Title>
           <Space>
-            <Link to="/crypto-news">Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/exchanges">Exchanges</Link>
             <Link to="/news">News</Link>
           </Space>
