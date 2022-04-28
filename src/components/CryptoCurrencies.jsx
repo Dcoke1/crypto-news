@@ -2,6 +2,7 @@ import React from "react";
 import millify from "millify";
 import { Link, useLocation } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
+import Loader from "./Loader";
 
 import { useGetCoinsQuery } from "../services/cryptoApi";
 
@@ -31,7 +32,9 @@ const CryptoCurrencies = ({ simplified }) => {
       )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {isFetching ? (
-          <h1 style={{ width: "100%", textAlign: "center" }}>Loading...</h1>
+          <div style={{ display: "block", margin: "0 auto" }}>
+            <Loader />
+          </div>
         ) : (
           cryptos?.map((currency, idx) => (
             <Col xs={24} sm={12} lg={6} className="crypto-card" key={idx}>

@@ -15,7 +15,11 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <Avatar src={image1} size="large" />
-        <Typography.Title level={2} className="logo">
+        <Typography.Title
+          style={{ marginBottom: "0" }}
+          level={2}
+          className="logo"
+        >
           <Link to="/crypto-news">Crypto News</Link>
         </Typography.Title>
       </div>

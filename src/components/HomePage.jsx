@@ -8,6 +8,7 @@ import {
   useGetExchangesQuery,
 } from "../services/cryptoApi";
 import { CryptoCurrencies, News } from ".";
+import Loader from "./Loader";
 
 const { Title } = Typography;
 
@@ -15,9 +16,9 @@ const HomePage = () => {
   const { data, isFetching } = useGetCryptosQuery();
   const { data: exchanges } = useGetExchangesQuery();
   const stats = data?.data;
-  const exch = exchanges
+  const exch = exchanges;
 
-  if (isFetching) return <h1 style={{ textAlign: "center" }}>Loading...</h1>;
+  if (isFetching) return <Loader />;
 
   return (
     <>

@@ -4,6 +4,7 @@ import moment from "moment";
 
 import { useGetNewsQuery } from "../services/newsApi.js";
 import { useGetCoinsQuery } from "../services/cryptoApi.js";
+import Loader from "./Loader.jsx";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -20,7 +21,7 @@ const News = ({ simplified }) => {
 
   const { data } = useGetCoinsQuery(100);
 
-  if (!news?.value) return "Loading...";
+  if (!news?.value) return <Loader />;
 
   return (
     <Row gutter={[24, 24]}>
@@ -48,7 +49,7 @@ const News = ({ simplified }) => {
       {news?.value.map((article, idx) => (
         <Col xs={24} sm={12} lg={8} key={idx}>
           <Card hoverable className="news-card">
-            <a href={article.url} target="_blank" rel="noreferrer">
+            <a className="news-body" href={article.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title className="news-title" level={4}>
                   {article.name}
