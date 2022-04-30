@@ -1,6 +1,6 @@
 import React from "react";
 import millify from "millify";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 import Loader from "./Loader";
 
@@ -18,7 +18,7 @@ const CryptoCurrencies = ({ simplified }) => {
     );
 
     setCryptos(filteredData);
-  }, [isFetching, cryptos, search]);
+  }, [isFetching, cryptosList, cryptos, search]);
 
   return (
     <div>
