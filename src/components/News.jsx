@@ -16,7 +16,7 @@ const News = ({ simplified }) => {
   const [newsCat, setNewsCat] = React.useState("Cryptocurrency");
   const { data: news } = useGetNewsQuery({
     newsCategory: newsCat,
-    count: simplified ? 6 : 15,
+    count: simplified ? 6 : 25,
   });
 
   const { data } = useGetCoinsQuery(100);

@@ -25,15 +25,16 @@ export const cryptoApi = createApi({
       query: (coinId) => createRequest(`${base_URL}/coins/${coinId}`),
     }),
     getHistory: builder.query({
-      query: ({ coinId, timePeriod }) =>  {
+      query: ({ coinId, timeAgo }) => {
         return {
-          url: `${base_URL}/coins/${coinId}/history`,
+          url: `${base_URL}/coins/${coinId}/market_chart`,
           headers: cryptoApiHeaders,
           params: {
-            date: timePeriod,
+            vs_currency: "usd",
+            days: `${timeAgo}`
           },
         };
-      }
+      },
     }),
     getCoins: builder.query({
       query: (count) => {

@@ -1,17 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import millify from "millify";
-import moment from "moment";
 import { Col, Row, Typography, Select } from "antd";
 import Loader from "./Loader";
 import {
   MoneyCollectOutlined,
   DollarCircleOutlined,
   FundOutlined,
-  ExclamationCircleOutlined,
-  StopOutlined,
   TrophyOutlined,
-  CheckOutlined,
   NumberOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
@@ -21,26 +17,25 @@ import LineChart from "./LineChart";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const date = moment();
-const newDate = date.subtract(3,'h').format('DD-MM-YYYY')
 
 const CryptoDetails = () => {
   const { coinId } = useParams();
-  const [timePeriod, setTimePeriod] = React.useState("7d");
+  const [timeAgo, setUserTime] = React.useState(7);
+
   const { data, isFetching } = useGetDetailsQuery(coinId);
-  // const { data: coinHistory } = useGetHistoryQuery({ coinId, newDate });
+  const { data: coinHistory } = useGetHistoryQuery({ coinId, timeAgo });
   const cryptoDetails = data;
 
-  console.log();
+  React.useEffect(()=>{},[timeAgo])
 
-  const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
+  const time = ["24", "7", "14", "30", "60", "200"];
 
   const stats = [
     {
       title: "Price to USD",
       value: `$ ${
         cryptoDetails?.market_data?.current_price?.usd &&
-        cryptoDetails?.market_data?.current_price?.usd
+        cryptoDetails.market_data.current_price.usd
       }`,
       icon: <DollarCircleOutlined />,
     },
@@ -102,7 +97,7 @@ const CryptoDetails = () => {
         <img
           style={{ borderRadius: "25%" }}
           src={cryptoDetails.image.small}
-          alt="crypto-image"
+          alt="crypto"
         />
         <Title level={2} className="coin-name">
           {cryptoDetails.name} ({cryptoDetails.symbol}) Price
@@ -117,18 +112,17 @@ const CryptoDetails = () => {
         defaultValue="7d"
         className="select-timeperiod"
         placeholder="Select Time Period"
-        onChange={(value) => setTimePeriod(value)}
+        onChange={(value) => setUserTime(value)}
       >
         {time.map((date) => (
           <Option key={date}>{date}</Option>
         ))}
       </Select>
-      {/* <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name}/> */}
+      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.market_data?.current_price?.usd)} coinName={cryptoDetails?.name}/>
 
-      <Col className="stats-container">
+      <Col style={{ marginTop: "1.5rem" }} className="stats-container">
         <Col className="coin-value-statistics">
           <Col
-            style={{ textAlign: "center" }}
             className="coin-value-statistics-heading"
           >
             <Title level={3} className="coin-detail-heading">
@@ -175,7 +169,7 @@ const CryptoDetails = () => {
           <p>{cryptoDetails.description?.en.replace(/(<([^>]+)>)/gi, "")}</p>
           <Col className="coin-links">
             <Title level={3} className="coin-details-heading">
-              {cryptoDetails.name} Links
+              {cryptoDetails.name} Link/s
             </Title>
             {cryptoDetails.links?.homepage.map((link, idx) => (
               <Row className="coin-links" key={idx}>
@@ -185,7 +179,7 @@ const CryptoDetails = () => {
               </Row>
             ))}
             <Title level={3} className="coin-details-heading">
-              Blockchain Websites
+              Blockchain Website/s
             </Title>
             {cryptoDetails.links?.blockchain_site?.map((link, idx) => (
               <Row className="coin-links" key={idx}>
@@ -194,9 +188,11 @@ const CryptoDetails = () => {
                 </a>
               </Row>
             ))}
-            <Title level={3} className="coin-details-heading">
-              Github Link
-            </Title>
+            {cryptoDetails.links.repos_url.github.length > 0 && (
+              <Title level={3} className="coin-details-heading">
+                Github Link/s
+              </Title>
+            )}
             {cryptoDetails.links?.repos_url?.github.map((link, idx) => (
               <Row className="coin-links" key={idx}>
                 <a href={link} target="_blank" rel="noreferrer">
