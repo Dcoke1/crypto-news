@@ -100,7 +100,7 @@ const CryptoDetails = () => {
           alt="crypto"
         />
         <Title level={2} className="coin-name">
-          {cryptoDetails.name} ({cryptoDetails.symbol}) Price
+          {cryptoDetails.name} ({cryptoDetails.symbol.toUpperCase()}) Price
         </Title>
         <p>
           {cryptoDetails.name} live price in US dollars. View value statistics,
