@@ -9,7 +9,7 @@ import Loader from "./Loader";
 const { Text } = Typography;
 const { Panel } = Collapse;
 
-export const Exchanges = () => {
+const Exchanges = () => {
   const { data, isFetching } = useGetExchangesQuery();
   const exchangesList = data;
 
