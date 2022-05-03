@@ -28,7 +28,7 @@ const CryptoDetails = () => {
 
   React.useEffect(()=>{},[timeAgo])
 
-  const time = ["24", "7", "14", "30", "60", "200"];
+  const time = ["7", "14", "30", "60", "90", "200"];
 
   const stats = [
     {
@@ -61,7 +61,7 @@ const CryptoDetails = () => {
       icon: <DollarCircleOutlined />,
     },
     {
-      title: "All-time-high (daily avg.)",
+      title: "All-time-high ( daily avg )",
       value: `$ ${
         cryptoDetails?.market_data?.ath?.usd &&
         millify(cryptoDetails.market_data.ath.usd)
@@ -115,7 +115,7 @@ const CryptoDetails = () => {
         onChange={(value) => setUserTime(value)}
       >
         {time.map((date) => (
-          <Option key={date}>{date}</Option>
+          <Option key={date}>{`${date}d`}</Option>
         ))}
       </Select>
       <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.market_data?.current_price?.usd)} coinName={cryptoDetails?.name}/>

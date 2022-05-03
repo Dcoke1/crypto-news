@@ -19,7 +19,7 @@ export const cryptoApi = createApi({
       query: () => createRequest(`${base_URL}/global`),
     }),
     getExchanges: builder.query({
-      query: () => createRequest(`${base_URL}/exchanges/list`),
+      query: () => createRequest(`${base_URL}/exchanges`),
     }),
     getDetails: builder.query({
       query: (coinId) => createRequest(`${base_URL}/coins/${coinId}`),
