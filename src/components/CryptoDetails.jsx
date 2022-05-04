@@ -26,6 +26,7 @@ const CryptoDetails = () => {
   const { data: coinHistory } = useGetHistoryQuery({ coinId, timeAgo });
   const cryptoDetails = data;
 
+  console.log(cryptoDetails);
   React.useEffect(()=>{},[timeAgo])
 
   const time = ["7", "14", "30", "60", "90", "200"];
@@ -167,7 +168,7 @@ const CryptoDetails = () => {
             What is {cryptoDetails.name}?
           </Title>
           <p>{cryptoDetails.description?.en.replace(/(<([^>]+)>)/gi, "")}</p>
-          <Col className="coin-links">
+          <Col className="coin-container">
             <Title level={3} className="coin-details-heading">
               {cryptoDetails.name} Link/s
             </Title>

@@ -124,7 +124,7 @@ a:hover {
     position: absolute;
     right: 0px;
   }
-  
+
   .home-title {
     font-size: 1.4rem !important;
   }
@@ -320,6 +320,9 @@ a:hover {
 }
 .ant-card {
   border: 1px solid lightgray !important;
+}
+.ant-btn {
+    padding: 0px 15px !important;
 }
 .news-card p {
   color: black;
