@@ -5,6 +5,7 @@ import { Card, Row, Col, Input } from "antd";
 import Loader from "./Loader";
 
 import { useGetCoinsQuery } from "../services/cryptoApi";
+import NoResults from "./NoResults";
 
 const CryptoCurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
@@ -34,6 +35,10 @@ const CryptoCurrencies = ({ simplified }) => {
         {isFetching ? (
           <div style={{ display: "block", margin: "0 auto" }}>
             <Loader />
+          </div>
+        ) : cryptos?.length === 0 ? (
+          <div className="no-results">
+            <NoResults search={search}/>
           </div>
         ) : (
           cryptos?.map((currency, idx) => (

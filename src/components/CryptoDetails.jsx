@@ -26,7 +26,6 @@ const CryptoDetails = () => {
   const { data: coinHistory } = useGetHistoryQuery({ coinId, timeAgo });
   const cryptoDetails = data;
 
-  console.log(cryptoDetails);
   React.useEffect(()=>{},[timeAgo])
 
   const time = ["7", "14", "30", "60", "90", "200"];
